@@ -1,14 +1,41 @@
 const grid = document.querySelectorAll('.cell')
-const arr = ['X', 'O', 'X', 'X', 'O', 'X', 'O', 'X', 'X']
+const cross = '❌'
+const circle = '⭕'
+let counter = 0
+
+grid.forEach(element => {
+    element.addEventListener('click', ()=>{
+        element.innerHTML = play()
+    })
+})
+
+
+function play(){
+    if (counter%2== 0){
+        counter++
+        return cross
+    } else {
+        counter++
+        return circle
+    }
+
+}
+
+
 
 
 function fillBoard (){
     let i = 0
     grid.forEach(element => {
-    element.innerHTML = arr[i]
-    console.log(element)
+        if ( i%2===0){
+            element.innerHTML = cross            
+        } else {
+            element.innerHTML = circle            
+        }
     i++
     });
 }
 
-fillBoard()
+
+
+
