@@ -1,30 +1,75 @@
+:root{
+    --bg-color: black;
+    --primary-color: lightgray;
+    --secondary-color: white;
+}
+
 body {
-    background-color: rgba(168, 152, 241, 0.829);
+    background-color: var(--bg-color);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    color: var(--primary-color);
 }
 h1{
     font-size: 48px;
-
+}
+h1:hover{
+    color: var(--secondary-color);
 }
 
 main {
-    margin-top: 100px;
-    border: 9px solid lightgray;
+    margin-top: 100px;  
     display: grid;
     grid-template-columns: repeat(3, auto);  
-    border: 15px solid black;  
-    border-radius: 15px;
 }
 
 .cell{
     text-align: center;
+    cursor: default;
     height: 15vh;
     width: 15vh;
     font-size: 13vh;
-    border: 1px solid grey;
-    background-color: white;
+    border: 2px solid var(--bg-color);
+    background-color: var(--primary-color);
+    border-radius: 15px;
 }
+.cell:hover{
+    background-color: var(--secondary-color);    
+}
+
+.❌,
+.⭕{
+    cursor: not-allowed;
+}
+.❌:hover,
+.⭕:hover{
+    background-color: var(--primary-color);
+}
+
+.hide{
+    display: none;
+}
+
+.result{
+    display: flex;
+    flex-direction: column;
+}
+
+.result-txt{
+    margin-top: 5vh;
+    font-size: 22px;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+    text-align: center;
+    letter-spacing:  2px;
+}
+
+button{
+    font-size: 50px;
+    background-color: var(--bg-color);
+    border: none;
+}
+
