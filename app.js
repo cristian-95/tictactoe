@@ -3,7 +3,7 @@ const grid = document.querySelectorAll('.cell')
 const resetButton = document.querySelector("button")
 const x = '❌'
 const circle = '⭕'
-let counter = 1
+let lock = false
 const winningConditions = [
     [0, 1, 2],
     [0, 4, 8],
@@ -29,27 +29,19 @@ function startGame(){
 }
 
 function handle () {
-    let round = mark()
-    this.innerHTML = round
-    this.classList.add(this.innerHTML)
-    if (checkWin(x)){
-        showResult(0)
-    } else if(checkWin(circle)){
-        showResult(1)
-    }else{
-        if (fullBoard()){
+    if(!lock){
+        this.innerHTML = x
+        this.classList.add(x)
+        if (checkWin(x)){
+            showResult(0)
+        }
+        setTimeout(botMove, 300)
+        if(checkWin(circle)){
+            showResult(1)
+        }
+        if(fullBoard()){
             showResult(2)
         }
-    }
-}
-
-function mark () {
-    if (counter%2==0){
-        counter++
-        return circle
-    } else{
-        counter++
-        return x
     }
 }
 
@@ -74,7 +66,9 @@ function fullBoard(){
 
 function showResult(index){
     p.innerHTML = messages[index]
-    resetButton.classList.remove("hide")    
+    lock = true
+    resetButton.classList.remove("hide")
+
 }
 
 function resetBoard(){
@@ -89,9 +83,28 @@ function resetBoard(){
     })
     p.innerHTML = ""
     resetButton.classList.add("hide")
-    counter = 1
+    lock = false
     startGame();
 }
 
+function botMove(){
+    if (lock) return
+    let index = Math.floor(Math.random() * 9)
+    if (grid[index].classList.length === 1){
+        grid[index].innerHTML = circle
+        grid[index].classList.add(circle)
+    } else {
+        for (let i=0; i<9; i++){
+            if (grid[i].classList.length === 1){
+                grid[i].innerHTML = circle
+                grid[i].classList.add(circle)
+                if(checkWin(circle)){
+                    showResult(1)
+                }
+                return
+            }
+        }
+    }
+}
 
 startGame();
