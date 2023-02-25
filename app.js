@@ -93,11 +93,13 @@ function botMove(){
     if (grid[index].classList.length === 1){
         grid[index].innerHTML = circle
         grid[index].classList.add(circle)
+        grid[index].removeEventListener("click", handle)
     } else {
         for (let i=0; i<9; i++){
             if (grid[i].classList.length === 1){
                 grid[i].innerHTML = circle
                 grid[i].classList.add(circle)
+                grid[i].removeEventListener("click", handle)
                 if(checkWin(circle)){
                     showResult(1)
                 }
