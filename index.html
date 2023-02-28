@@ -11,7 +11,33 @@
 <body>
     <header>
         <h1>T1C-T4C-T03</h1>
-        <p>vs bot 1.0</p>
+        <div class="config">
+            <div class="config-inner-div">
+                <label for="enemy">enemy: </label>
+                <select class="setup" name="enemy" id="select-enemy">
+                    <option value="bot" selected>vs 🤖</option>
+                    <option value="human">vs 🧠</option>
+                </select>
+            </div>
+            <div class="config-inner-div">
+                <label for="x-or-circle">x or circle: </label>
+                <select class="setup" name="x-or-circle" id="select-x-or-circle">
+                    <option value="x" selected>❌</option>
+                    <option value="circle">⭕</option>
+                </select>
+            </div>
+            <div class="config-inner-div">
+                <label for="first">who go first: </label>
+                <select class="setup" name="first" id="select-first">
+                    <option value="p1" selected>I go first.</option>
+                    <option value="p2">You can go.</option>
+                </select>                
+            </div>
+            <div class="config-inner-div">
+                <button id="apply-changes">apply changes</button>
+            </div>
+        </div>
+        
     </header>
     <main id="board">
         <div id="cell-1" class="cell"> </div>
@@ -26,7 +52,7 @@
     </main>
     <div class="result">
         <p class="result-txt"></p>
-        <button class="hide">🔁</button>
+        <button id="resetButton">🔁</button>
     </div>    
 </body>
 </html>
